@@ -25,21 +25,25 @@ class XmlRpcService
 
     public function call(string $method, array $arguments = [])
     {
+        $xml = [
+            'methodCall' => [
+                'methodName' => $method,
+            ],
+        ];
+
+        if (count($arguments) > 0) {
+            $xml['params'] = $arguments;
+        }
 
         return $this->requestService->request(new Request(
             'POST',
             '',
             [],
-            new XmlStream([
-                'methodCall' => [
-                    'methodName' => $method,
-                ],
-            ])
+            new XmlStream($xml)
         ))->then(function (ResponseInterface $response) {
-            $status = $response->getBody()->getParsedContents();
-            $status = $status['methodResponse']['params']['param']['value']['boolean'];
+            $xml = $response->getBody()->getParsedContents();
 
-            return resolve($status);
+            return resolve($xml['methodResponse']['params']['param']);
         });
     }
 }
