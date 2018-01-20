@@ -26,6 +26,22 @@ class XmlRpcService
 
     public function call(string $method, array $arguments = [])
     {
+        $params = [];
+        foreach ($arguments as $argument) {
+            $params[] = [
+                'param' => [
+                    'value' => [
+                        gettype($argument) => $argument,
+                    ],
+                ],
+            ];
+        }
+
+        return $this->callRaw($method, $params);
+    }
+
+    public function callRaw(string $method, array $arguments = [])
+    {
         $xml = [
             'methodCall' => [
                 'methodName' => $method,
