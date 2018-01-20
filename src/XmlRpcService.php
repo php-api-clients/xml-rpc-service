@@ -33,7 +33,7 @@ class XmlRpcService
         ];
 
         if (count($arguments) > 0) {
-            $xml['params'] = $arguments;
+            $xml['methodCall']['params'] = $arguments;
         }
 
         return $this->requestService->request(new Request(
