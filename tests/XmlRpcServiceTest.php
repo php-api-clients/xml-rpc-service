@@ -78,11 +78,13 @@ final class XmlRpcServiceTest extends TestCase
                             'struct' => [
                                 'member' => [
                                     [
+                                        'name' => 'faultCode',
                                         'value' => [
                                             'int' => '123',
                                         ],
                                     ],
                                     [
+                                        'name' => 'faultString',
                                         'value' => [
                                             'string' => 'ERROR_MESSAGE',
                                         ],

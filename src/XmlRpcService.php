@@ -63,10 +63,12 @@ class XmlRpcService
             $xml = $response->getBody()->getParsedContents();
 
             if (isset($xml['methodResponse']['fault'])) {
+                $fault = XmlRpcPayloadParser::parse($xml['methodResponse']['fault']['value']);
+
                 return reject(
                     new XmlRpcError(
-                        $xml['methodResponse']['fault']['value']['struct']['member'][1]['value']['string'],
-                        (int)$xml['methodResponse']['fault']['value']['struct']['member'][0]['value']['int']
+                        $fault['faultString'],
+                        $fault['faultCode']
                     )
                 );
             }
