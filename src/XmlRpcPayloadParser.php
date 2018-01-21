@@ -36,6 +36,31 @@ final class XmlRpcPayloadParser
             return new DateTimeImmutable($xml['dateTime.iso8601']);
         }
 
+        if (isset($xml['array'])) {
+            $array = [];
+
+            if (key($xml['array']['data']['value']) === 'struct') {
+                $xml['array']['data']['value'] = [$xml['array']['data']['value']];
+            }
+
+            foreach ($xml['array']['data']['value'] as $item) {
+                $array[] = self::parse($item);
+            }
+
+            return $array;
+        }
+
+
+        if (isset($xml['struct'])) {
+            $struct = [];
+
+            foreach ($xml['struct']['member'] as $member) {
+                $struct[$member['name']] = self::parse($member['value']);
+            }
+
+            return $struct;
+        }
+
         return $xml;
     }
 }

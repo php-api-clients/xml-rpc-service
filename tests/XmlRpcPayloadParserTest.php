@@ -65,6 +65,24 @@ final class XmlRpcPayloadParserTest extends TestCase
             ],
             'you can\'t read this!',
         ];
+
+        yield [
+            [
+                'struct' => [
+                    'member' => [
+                        [
+                            'name' => 'name',
+                            'value' => [
+                                'int' => '123',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+            [
+                'name' => 123,
+            ],
+        ];
     }
 
     /**
