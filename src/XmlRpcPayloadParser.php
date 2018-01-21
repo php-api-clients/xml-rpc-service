@@ -50,7 +50,6 @@ final class XmlRpcPayloadParser
             return $array;
         }
 
-
         if (isset($xml['struct'])) {
             $struct = [];
 
