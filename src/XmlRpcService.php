@@ -1,13 +1,14 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace ApiClients\Tools\Services\XmlRpc;
 
 use ApiClients\Foundation\Transport\Service\RequestService;
 use ApiClients\Middleware\Xml\XmlStream;
+use DateTimeImmutable;
 use Psr\Http\Message\ResponseInterface;
+use RingCentral\Psr7\Request;
 use function React\Promise\reject;
 use function React\Promise\resolve;
-use RingCentral\Psr7\Request;
 
 class XmlRpcService
 {
@@ -37,7 +38,9 @@ class XmlRpcService
             ];
         }
 
-        return $this->callRaw($method, $params);
+        return $this->callRaw($method, $params)->then(function (array $xml) {
+            return $this->parseMessage($xml);
+        });
     }
 
     public function callRaw(string $method, array $arguments = [])
@@ -69,7 +72,36 @@ class XmlRpcService
                 );
             }
 
-            return resolve($xml['methodResponse']['params']['param']);
+            return resolve($xml['methodResponse']['params']['param']['value']);
         });
+    }
+
+    private function parseMessage(array $xml)
+    {
+        if (isset($xml['string'])) {
+            return $xml['string'];
+        }
+
+        if (isset($xml['i4'])) {
+            return (int)$xml['i4'];
+        }
+
+        if (isset($xml['int'])) {
+            return (int)$xml['int'];
+        }
+
+        if (isset($xml['double'])) {
+            return (float)$xml['double'];
+        }
+
+        if (isset($xml['boolean'])) {
+            return (bool)$xml['boolean'];
+        }
+
+        if (isset($xml['dateTime.iso8601'])) {
+            return new DateTimeImmutable($xml['dateTime.iso8601']);
+        }
+
+        return $xml;
     }
 }
