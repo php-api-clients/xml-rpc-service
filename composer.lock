@@ -147,16 +147,16 @@
         },
         {
             "name": "api-clients/transport",
-            "version": "3.1.0",
+            "version": "3.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-api-clients/transport.git",
-                "reference": "c0e9696cbdea99e1ca12495c75ea566bb8502108"
+                "reference": "30fdab79310655412fe3ab94cec6776cd9f1d517"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-api-clients/transport/zipball/c0e9696cbdea99e1ca12495c75ea566bb8502108",
-                "reference": "c0e9696cbdea99e1ca12495c75ea566bb8502108",
+                "url": "https://api.github.com/repos/php-api-clients/transport/zipball/30fdab79310655412fe3ab94cec6776cd9f1d517",
+                "reference": "30fdab79310655412fe3ab94cec6776cd9f1d517",
                 "shasum": ""
             },
             "require": {
@@ -201,7 +201,7 @@
                 }
             ],
             "description": "Middleware infused clue/buzz-react",
-            "time": "2017-12-19T20:58:17+00:00"
+            "time": "2018-07-09T16:52:49+00:00"
         },
         {
             "name": "api-clients/xml",
@@ -246,34 +246,36 @@
         },
         {
             "name": "clue/buzz-react",
-            "version": "v2.2.0",
+            "version": "v2.5.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/clue/php-buzz-react.git",
-                "reference": "3fec9c17ffd4f7443f853de986e734b4c131f98e"
+                "url": "https://github.com/clue/reactphp-buzz.git",
+                "reference": "758a731c626eac2b88bad5359431650ef7384a55"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/clue/php-buzz-react/zipball/3fec9c17ffd4f7443f853de986e734b4c131f98e",
-                "reference": "3fec9c17ffd4f7443f853de986e734b4c131f98e",
+                "url": "https://api.github.com/repos/clue/reactphp-buzz/zipball/758a731c626eac2b88bad5359431650ef7384a55",
+                "reference": "758a731c626eac2b88bad5359431650ef7384a55",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.4",
+                "php": ">=5.3",
                 "psr/http-message": "^1.0",
                 "react/event-loop": "^1.0 || ^0.5 || ^0.4 || ^0.3",
-                "react/http-client": "^0.5.6",
-                "react/promise": "^2.2.1",
+                "react/http-client": "^0.5.8",
+                "react/promise": "^2.2.1 || ^1.2.1",
                 "react/promise-stream": "^1.0 || ^0.1.1",
-                "react/socket": "^1.0 || ^0.8.4",
+                "react/promise-timer": "^1.2",
+                "react/socket": "^1.1",
                 "react/stream": "^1.0 || ^0.7",
                 "ringcentral/psr7": "^1.2"
             },
             "require-dev": {
                 "clue/block-react": "^1.0",
+                "clue/http-proxy-react": "^1.3",
                 "clue/socks-react": "^0.8",
-                "phpunit/phpunit": "^4.5",
-                "react/http": "^0.7.2"
+                "phpunit/phpunit": "^7.0 || ^6.4 || ^5.7 || ^4.8.35",
+                "react/http": "^0.8"
             },
             "type": "library",
             "autoload": {
@@ -292,7 +294,7 @@
                 }
             ],
             "description": "Simple, async PSR-7 HTTP client for concurrently processing any number of HTTP requests, built on top of ReactPHP",
-            "homepage": "https://github.com/clue/php-buzz-react",
+            "homepage": "https://github.com/clue/reactphp-buzz",
             "keywords": [
                 "async",
                 "http",
@@ -300,7 +302,7 @@
                 "psr-7",
                 "reactphp"
             ],
-            "time": "2017-10-24T17:53:40+00:00"
+            "time": "2018-10-24T07:47:33+00:00"
         },
         {
             "name": "doctrine/annotations",
@@ -986,16 +988,16 @@
         },
         {
             "name": "reactivex/rxphp",
-            "version": "2.0.6",
+            "version": "2.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ReactiveX/RxPHP.git",
-                "reference": "e44b2ae3fe36bf3479457f58113b620df4a92f1f"
+                "reference": "fd74a0cd2b5edd4a48e4ff12aaa44cc6cdc4a9b4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ReactiveX/RxPHP/zipball/e44b2ae3fe36bf3479457f58113b620df4a92f1f",
-                "reference": "e44b2ae3fe36bf3479457f58113b620df4a92f1f",
+                "url": "https://api.github.com/repos/ReactiveX/RxPHP/zipball/fd74a0cd2b5edd4a48e4ff12aaa44cc6cdc4a9b4",
+                "reference": "fd74a0cd2b5edd4a48e4ff12aaa44cc6cdc4a9b4",
                 "shasum": ""
             },
             "require": {
@@ -1005,7 +1007,7 @@
             "require-dev": {
                 "phpunit/phpcov": "^3.1",
                 "phpunit/phpunit": "^5.7",
-                "react/event-loop": "^0.4.2",
+                "react/event-loop": "^1.0 || ^0.5 || ^0.4.2",
                 "satooshi/php-coveralls": "~1.0"
             },
             "suggest": {
@@ -1047,7 +1049,7 @@
                 "reactive",
                 "rx"
             ],
-            "time": "2017-11-02T20:58:41+00:00"
+            "time": "2018-04-18T01:34:36+00:00"
         },
         {
             "name": "ringcentral/psr7",
